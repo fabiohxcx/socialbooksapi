@@ -6,11 +6,9 @@ public class LivroNaoEncontradoException extends RuntimeException {
 
 	public LivroNaoEncontradoException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public LivroNaoEncontradoException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 }
