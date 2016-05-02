@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,16 +26,21 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty(message = "Campo nome é de preenchimento obrigatório.")
 	private String nome;
 
 	@JsonInclude(Include.NON_NULL)
 	@JsonFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "O campo publicação é de preenchimento obrigatorio")
 	private Date publicacao;
 
 	@JsonInclude(Include.NON_NULL)
+	@NotNull(message = "O campo editora é de preenchimento obrigatorio")
 	private String editora;
 
 	@JsonInclude(Include.NON_NULL)
+	@NotEmpty(message = "Campo resumo é de preenchimento obrigatório.")
+	@Size(max = 1500, message = "O resumo não pode conter mais de 1500 caracteres")
 	private String resumo;
 
 	@JsonInclude(Include.NON_EMPTY)
